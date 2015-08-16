@@ -23,6 +23,12 @@ var getChampionsEndpoint = function(region, types) {
     "&champData=" + types.join(",");
 }
 
+var getChampionEndpoint = function(region, id) {
+  return BASE_ENDPOINT + 
+    sprintf("/api/lol/static-data/%s/v1.2/champion/%s", region, id) + 
+    "?api_key=" + API_KEY;
+}
+
 module.exports = {
   getMatch: function(matchId) {
     return rp(getMatchEndpoint("na", matchId));
@@ -34,5 +40,9 @@ module.exports = {
     }
 
     return rp(getChampionsEndpoint("na", types));
+  },
+
+  getChampion: function(id) {
+    return rp(getChampionEndpoint("na", id));
   }
 }

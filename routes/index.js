@@ -7,8 +7,16 @@ var RiotDAO = require('../dao/RiotDAO');
 router.get('/', function(req, res, next) {
   RiotDAO.getChampions().then(function(results) {
     res.render('index', {
-      rawData:  JSON.parse(results), 
+      rawData: JSON.parse(results), 
       title: "Black Market Bureaucrats"
+    });
+  });
+});
+
+router.get('/:id', function(req, res, next) {
+  RiotDAO.getChampion(req.params.id).then(function(results) {
+    res.render('champion', {
+      rawData: JSON.parse(results)
     });
   });
 });
