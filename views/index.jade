@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
   for character in rawData.data
-    img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{character.image.full}')
+    img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{character.image.full}', rel="prefetch")
   script(type="text/javascript").
     var data = !{JSON.stringify(rawData)}
   script(type="text/javascript",src="/javascripts/index.js")
