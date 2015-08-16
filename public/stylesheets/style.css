@@ -7,8 +7,15 @@ a {
   color: #00B7FF;
 }
 
+.champContainer {
+	width:100%;
+	margin: 0px auto;
+  vertical-align: middle;
+}
+
 .champSquare {
-	width:60px;
+  display: inline;
+	width:87px;
 }
 .champSquare:hover{
 	opacity: 0.7;
