@@ -1,7 +1,51 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #10181e;
+  color: #f20c1e;
 }
+
+
+/*******************************
+NAVBAR
+********************************/
+
+.navBar{
+  font-size: 2em;
+  /*background-color: #f20c1e;*/
+}
+
+.navBar ul{
+  list-style-type: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+
+.navBar ul li{
+  border: 1px solid #a2050e;
+  background-color: #f20c1e;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 0em;
+  margin-right: 1em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding:0.5em;
+  color: #10181e;
+}
+.navBar ul li:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  color: white; 
+}
+
+/*******************************
+NAVBAR
+********************************/
+
 
 a {
   color: #00B7FF;
@@ -10,14 +54,18 @@ a {
 .champContainer {
 	width:100%;
 	margin: 0px auto;
-  vertical-align: middle;
+  text-align: center;
 }
 
 .champSquare {
   display: inline;
-	width:87px;
+  width:75px;
+  height: 75px;
+  text-align: center;
 }
+
 .champSquare:hover{
 	opacity: 0.7;
 	cursor: pointer;
+  color: white;
 }
