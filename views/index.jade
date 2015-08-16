@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{JSON.parse(rawData).data.Aatrox.image.full}')
   script(type="text/javascript").
     var data = !{rawData}
   script(type="text/javascript",src="/javascripts/index.js")
