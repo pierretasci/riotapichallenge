@@ -3,8 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  -var i=0;
   for character in rawData.data
-    img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{character.image.full}', rel="prefetch")
+    -i++;
+    if i%20==1
+      br
+    img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{character.image.full}',data-id='#{character.id}', rel="prefetch").champSquare
   script(type="text/javascript").
     var data = !{JSON.stringify(rawData)}
   script(type="text/javascript",src="/javascripts/index.js")
