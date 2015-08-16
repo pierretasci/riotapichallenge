@@ -34,12 +34,16 @@ NAVBAR
   margin-top: 0px;
   margin-bottom: 0px;
   padding:0.5em;
-  color: #10181e;
 }
 .navBar ul li:hover {
   opacity: 0.5;
   cursor: pointer;
   color: white; 
+}
+
+.navBar a, .navBar a:visited {
+  text-decoration: none;
+  color: #10181e;
 }
 
 /*******************************

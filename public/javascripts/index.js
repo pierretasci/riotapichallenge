@@ -8,3 +8,4 @@ for (var i=0;i<champClass.length;i++) {
 		window.location+=champID;
 	})
 }
+
