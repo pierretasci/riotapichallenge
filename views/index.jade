@@ -3,8 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  -var i=0;
   div.champContainer
+    -var i=0;
     for character in rawData.data
       -i++;
       if i%14==1

@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   RiotDAO.getChampions().then(function(results) {
     res.render('index', {
       rawData: JSON.parse(results), 
-      title: "Black Market Bureaucrats"
+      title: "Black Market Browser"
     });
   });
 });
