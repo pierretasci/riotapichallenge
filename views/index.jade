@@ -6,6 +6,6 @@ block content
   for character in rawData.data
     img(src='http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{character.image.full}')
   script(type="text/javascript").
-    var data = !{rawData}
+    var data = !{JSON.stringify(rawData)}
   script(type="text/javascript",src="/javascripts/index.js")
 
