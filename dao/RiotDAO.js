@@ -15,8 +15,24 @@ var getMatchEndpoint = function(region, matchId, includeTimeline) {
     "&includeTimeline=" + includeTimeline;
 }
 
+var getChampionsEndpoint = function(region, types) {
+  types = types == null ? [] : types;
+  return BASE_ENDPOINT + 
+    sprintf("/api/lol/static-data/%s/v1.2/champion", region) + 
+    "?api_key=" + API_KEY + 
+    "&champData=" + types.join(",");
+}
+
 module.exports = {
   getMatch: function(matchId) {
     return rp(getMatchEndpoint("na", matchId));
+  },
+
+  getChampions: function(types) {
+    if(types == null) {
+      types = ["info", "image"];
+    }
+
+    return rp(getChampionsEndpoint("na", types));
   }
 }
