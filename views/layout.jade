@@ -19,4 +19,5 @@ html
     script(type="text/javascript").
       var allChamps = !{JSON.stringify(rawData)}
       //- pass this variable to javascript. This is necessary for the search bar
+      //- ISSUE: in champion.jade this variable is turning into just that champion's object, not the entire list
     block content
