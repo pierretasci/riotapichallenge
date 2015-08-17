@@ -10,3 +10,7 @@ body {
   border-radius: 7px;
   display: inline-block;
 }
+
+.transparent h1 {
+  margin-top: 0px;
+}
