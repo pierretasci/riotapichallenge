@@ -7,6 +7,7 @@ block content
     -var i=0;
     for character in rawData.data
       -i++;
+      //- 14 champions on a line
       if i%14==1
         br
       img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{character.image.full}',
@@ -17,4 +18,5 @@ block content
   script(type="text/javascript").
     var data = !{JSON.stringify(rawData)}
   script(type="text/javascript",src="/javascripts/index.js")
+  script(type="text/javascript",src="/javascripts/homePage.js")
 
