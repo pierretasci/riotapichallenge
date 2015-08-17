@@ -1,9 +1,17 @@
 extends layout
 
 block content
+  head
+    title  #{rawData.name}
+    link(rel='stylesheet', href='/stylesheets/champions.css')
+
   //- p= JSON.stringify(rawData)
-  h1  #{rawData.name}
-  h2  #{rawData.title}
-  img(src='http://ddragon.leagueoflegends.com/cdn/img/champion/splash/#{rawData.name}_0.jpg')
-    //- Maybe make this the background of the page. 
-    //- we can put black div's in front of it and make them semi transparent
+  div.transparent
+    h1  #{rawData.name}
+    h2  #{rawData.title}
+
+  script(type="text/javascript").
+    var champ = !{JSON.stringify(rawData)} // Pass champion data to champions.js
+  script(type="text/javascript",src="/javascripts/champions.js")
+
+ 

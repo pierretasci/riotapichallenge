@@ -8,11 +8,14 @@ html
     header
        div.navBar
           ul
-            li
-              a(href="") Home 
+            li.navButton
+              a(href="..") Home 
               //- Not sure how to fill in the links
-            li 
-              a(href="") About
+            li.navButton
+              a(href="about") About
+            li.searchBar 
+              label(for="searchField") Search:  
+              input(type="text")#searchField
 
 
     block content
