@@ -14,8 +14,9 @@ html
               a(href="/about") About
             li.searchBar 
               label(for="searchField") Search Champion:  
-              input(type="text",autofocus="true",placeholder="Type a Champion name or title" )#searchField
-      div.searchOutput#searchOutput.hidden
+              div.searchContainer 
+                input(type="text",autofocus="true",placeholder="Type a Champion name or title" )#searchField
+                div.searchOutput#searchOutput.hidden
     script(type="text/javascript").
       var allChamps = !{JSON.stringify(rawData)}
       //- pass this variable to javascript. This is necessary for the search bar

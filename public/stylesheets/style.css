@@ -1,3 +1,6 @@
+/*******************************
+GENERAL
+********************************/
 body {
   width: 1200px;
   padding: 50px;
@@ -8,6 +11,13 @@ body {
   overflow: scroll;
 }
 
+.clearfix {
+  clear: both;
+}
+
+/*******************************
+^GENERAL
+********************************/
   
 /*******************************
 NAVBAR
@@ -38,7 +48,7 @@ header {
   margin-left: 1em;
 }
 
-.navBar a, .navBar a:visited {
+.navBar .navButton a, .navBar .navButton a:visited {
   border: 1px solid #a2050e;
   background-color: #f20c1e;
   border-radius: 5px;
@@ -47,7 +57,7 @@ header {
   color: #10181e;
 }
 
-.navBar a:hover {
+.navBar .navButton a:hover {
   background-color: #f01c3e;
   cursor: pointer;
 }
@@ -66,6 +76,16 @@ SEARCHBAR
   float: right;
 }
 
+.searchBar > label {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.searchContainer {
+  position: relative;
+  display: inline-block;
+}
+
 .searchBar input{
   vertical-align: middle;
   font-size: 1em;
@@ -74,12 +94,11 @@ SEARCHBAR
 
 .searchOutput{
   position: absolute;
-  float: right;
-  top: 98px;
-  left:752px;
-  width:504px;
+  top: 100%;
+  right: 0;
+  min-width: 500px;
   background-color: #101858;
-  font-size: 2em;
+  font-size: 0.8em;
   color: #999;
   border: 2px solid #00003f;
   border-bottom-right-radius: 10px;
@@ -99,11 +118,6 @@ SEARCHBAR
 
 .hidden {
   display: none;
-}
-
-.scrollBar {
-  height:300px;
-  overflow: auto;
 }
 /*******************************
 ^SEARCHBAR 

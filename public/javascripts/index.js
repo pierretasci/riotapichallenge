@@ -4,9 +4,9 @@ var champClass = document.getElementsByClassName('champSquare');
 // Search Bar
 var searchField = document.getElementById('searchField');
 
-searchField.addEventListener('input',function(e) {
-  var inp = searchField.value;
-  searchResults(champSearch(inp));
+searchField.addEventListener('keyup',function(e) {
+  var inp = e.currentTarget.value;
+  searchResults(champSearch(inp.trim()));
 })
 
 var champList = allChamps['data'];
@@ -16,23 +16,29 @@ var champList = allChamps['data'];
 // Searches for any champions whose name includes the phrase
 // Returns a list of champion objects that are a match
 var champSearch = function(phrase) {
-  if (phrase.length==0) {return []}
+  if (phrase.length==0) {
+    return [];
+  }
+
   var matches = [];
-  phrase = phrase.toUpperCase();
-  phrase = phrase.replace(/\s/g, '');
+  phrase = normalizeChampName(phrase);
  
   for(var champion in champList) {
-    var champName = champList[champion].name;
-    var champTitle = champList[champion].title;
-    champName =  champName.toUpperCase();
-    champName =  champName.replace(/\s/g, '');
-    champName = champName.replace("'",'');
+    var champName = normalizeChampName(champList[champion].name);
+    // var champTitle = champList[champion].title;
 
-    if(champName.search(phrase)!=-1) {
+    if(champName.search(phrase) != -1) {
       matches.push(champList[champion])
     }
   }
-return matches;
+
+  return matches;
+}
+
+var normalizeChampName = function(name) {
+  return name.trim()
+    .toUpperCase()
+    .replace(/[^a-zA-Z0-9]/g, '');
 }
 
 var searchOutput = document.getElementById('searchOutput');
