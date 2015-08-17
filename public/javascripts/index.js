@@ -18,5 +18,6 @@ if(data) {
 var searchField = document.getElementById('searchField');
 
 searchField.addEventListener('input',function(e) {
-  
+  console.log('hi');
+  console.log(searchField.value);
 })

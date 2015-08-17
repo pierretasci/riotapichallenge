@@ -4,6 +4,7 @@ body {
   background-color: #10181e;
   color: #f20c1e;
   -webkit-user-select:none;
+  overflow: scroll;
 }
 
   
