@@ -41,7 +41,8 @@ NAVBAR
   text-decoration: none;
   color: #10181e;
 }
-.navBar li:hover, .navBar a:hover, .navBar li:hover {
+
+.navBar a:hover {
   background-color: #f01c3e;
   cursor: pointer;
 }
@@ -49,6 +50,7 @@ NAVBAR
 .searchBar {
   float: right;
 }
+
 .searchBar input{
   vertical-align: middle;
   font-size: 1em;
