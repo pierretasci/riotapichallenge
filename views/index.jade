@@ -10,10 +10,12 @@ block content
       //- 14 champions on a line
       if i%14==1
         br
+      //- These images are not appearing in alphabetical order. Apparently for...in uses arbitrary ordering
       img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{character.image.full}',
         data-id='#{character.id}', 
         rel="prefetch",
-        alt='#{character.name}'
+        alt='#{character.name}',
+        id='#{character.id}'
         ).champSquare
   script(type="text/javascript",src="/javascripts/index.js")
   script(type="text/javascript",src="/javascripts/homePage.js")

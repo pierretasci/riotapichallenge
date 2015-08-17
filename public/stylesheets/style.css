@@ -1,4 +1,5 @@
 body {
+  width: 1200px;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #10181e;
@@ -11,7 +12,9 @@ body {
 /*******************************
 NAVBAR
 ********************************/
-
+header {
+  position: relative;
+}
 .navBar{
   font-size: 2em;
   margin-bottom:1em;
@@ -28,10 +31,11 @@ NAVBAR
 
 .navBar ul li{
   display: inline-block;
-  margin-right: 1em;
-  margin-left: 0em;
-  margin-top: 0px;
-  margin-bottom: 0px;
+ margin: 0px;
+}
+
+.navBar ul li+li {
+  margin-left: 1em;
 }
 
 .navBar a, .navBar a:visited {
@@ -48,22 +52,68 @@ NAVBAR
   cursor: pointer;
 }
 
-.searchBar {
-  float: right;
-}
-
-.searchBar input{
-  vertical-align: middle;
-  font-size: 1em;
-}
 
 /*******************************
 ^NAVBAR 
 ********************************/
 
 
+/*******************************
+SEARCHBAR 
+********************************/
+.searchBar {
+  margin-right: 0px;
+  float: right;
+}
+
+.searchBar input{
+  vertical-align: middle;
+  font-size: 1em;
+  width:500px;
+}
+
+.searchOutput{
+  position: absolute;
+  float: right;
+  top: 98px;
+  left:752px;
+  width:504px;
+  background-color: #101858;
+  font-size: 2em;
+  color: #999;
+  border: 2px solid #00003f;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  z-index: 100;
+}
+
+.searchResultChamp {
+  vertical-align: middle;
+}
+
+.searchResultChamp img {
+  margin:3px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
+.scrollBar {
+  height:300px;
+  overflow: auto;
+}
+/*******************************
+^SEARCHBAR 
+********************************/
+
+
 a {
-  color: #00B7FF;
+  color: #999;
+  text-decoration: none;
+
 }
 
 .champContainer {
@@ -73,14 +123,19 @@ a {
 }
 
 .champSquare {
+  border: 1px solid #10181e;
   display: inline;
   width:75px;
   height: 75px;
   text-align: center;
+  z-index: 0;
+  top:0px;
+  left:0px;
 }
 
 .champSquare:hover{
 	opacity: 0.7;
 	cursor: pointer;
   color: white;
+  border: 1px solid white;
 }
