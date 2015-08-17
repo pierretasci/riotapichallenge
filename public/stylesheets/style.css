@@ -26,18 +26,18 @@ NAVBAR
 }
 
 .navBar ul li{
+  display: inline-block;
+  margin-right: 1em;
+  margin-left: 0em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.navBar a, .navBar a:visited {
   border: 1px solid #a2050e;
   background-color: #f20c1e;
   border-radius: 5px;
-  display: inline-block;
-  margin-left: 0em;
-  margin-right: 1em;
-  margin-top: 0px;
-  margin-bottom: 0px;
   padding:0.5em;
-  color: #10181e;
-}
-.navBar a, .navBar a:visited {
   text-decoration: none;
   color: #10181e;
 }
