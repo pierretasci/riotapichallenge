@@ -10,8 +10,9 @@ block content
     h2  #{champInfo.title}
 
   script(type="text/javascript").
-    var champ = !{JSON.stringify(champInfo)} // Pass champion data to champions.js
-    var allChamps = !{JSON.stringify(champions)} // The list of champions for the sake of search
+    var champ = !{JSON.stringify(champInfo)}; // Pass champion data to champions.js
+    var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search
+    var champData = !{JSON.stringify(champData)}; // The stat data for this champion
   script(type="text/javascript",src="/javascripts/index.js") 
   script(type="text/javascript",src="/javascripts/champions.js") 
 

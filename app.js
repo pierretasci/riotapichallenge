@@ -4,7 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var Parse = require('parse').Parse;
+
 var routes = require('./routes/index');
+
+// == SETUP PARSE ==
+
+Parse.initialize("rGBdUpv9d0jiyMZVntjKmEumiG9HW58LDG1Xa0pd", "ifQwhZl27cc3dVWkukzBrk4HF8yFSivfoCXMA6WN");
 
 // == SETUP APP == 
 
