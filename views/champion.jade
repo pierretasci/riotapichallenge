@@ -2,16 +2,16 @@ extends layout
 
 block content
   head
-    title  #{rawData.name}
+    title  #{champInfo.name}
     link(rel='stylesheet', href='/stylesheets/champions.css')
 
-  //- p= JSON.stringify(rawData)
   div.transparent
-    h1  #{rawData.name}
-    h2  #{rawData.title}
+    h1  #{champInfo.name}
+    h2  #{champInfo.title}
 
   script(type="text/javascript").
-    var champ = !{JSON.stringify(rawData)} // Pass champion data to champions.js
+    var champ = !{JSON.stringify(champInfo)} // Pass champion data to champions.js
+    var allChamps = !{JSON.stringify(champions)} // The list of champions for the sake of search
   script(type="text/javascript",src="/javascripts/index.js") 
   script(type="text/javascript",src="/javascripts/champions.js") 
 

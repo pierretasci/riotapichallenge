@@ -15,7 +15,9 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "bluebird": "^2.9.34",
     "config": "^1.15.0",
+    "node-cache": "^3.0.0",
     "request-promise": "^0.4.3",
     "sprintf-js": "^1.0.3"
   }

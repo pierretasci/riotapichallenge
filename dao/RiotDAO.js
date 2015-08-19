@@ -1,6 +1,7 @@
 var rp = require("request-promise");
 var sprintf = require("sprintf-js").sprintf;
 var config = require("config");
+var cache = require('./MemCache');
 
 // CONSTANTS
 var BASE_ENDPOINT = "https://na.api.pvp.net";
@@ -29,6 +30,10 @@ var getChampionEndpoint = function(region, id) {
     "?api_key=" + API_KEY;
 }
 
+var getChampionsCacheKey = function(types) {
+  return "getChampions|"+JSON.stringify(types);
+}
+
 module.exports = {
   getMatch: function(matchId) {
     return rp(getMatchEndpoint("na", matchId));
@@ -39,7 +44,18 @@ module.exports = {
       types = ["info", "image"];
     }
 
-    return rp(getChampionsEndpoint("na", types));
+    var champPromise = cache.get(getChampionsCacheKey(types));
+
+    if(champPromise) {
+      return champPromise;
+    } else {
+      var champPromise = rp(getChampionsEndpoint("na", types));
+
+      // Cache this
+      cache.set(getChampionsCacheKey(types), champPromise);
+
+      return champPromise;
+    }
   },
 
   getChampion: function(id) {

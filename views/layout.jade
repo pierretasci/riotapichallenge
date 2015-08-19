@@ -18,7 +18,7 @@ html
                 input(type="text",autofocus="true",placeholder="Type a Champion name or title" )#searchField
                 div.searchOutput#searchOutput.hidden
     script(type="text/javascript").
-      var allChamps = !{JSON.stringify(rawData)}
+      var allChamps = !{JSON.stringify(champions)}
       //- pass this variable to javascript. This is necessary for the search bar
       //- ISSUE: in champion.jade this variable is turning into just that champion's object, not the entire list
     block content
