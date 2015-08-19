@@ -8,7 +8,10 @@ block content
   div.transparent
     h1  #{champInfo.name}
     h2  #{champInfo.title}
-
+  div.clearfix
+  div.transparent
+    p#numGames Total Games: 
+    p#winrate Winrate: 
   script(type="text/javascript").
     var champ = !{JSON.stringify(champInfo)}; // Pass champion data to champions.js
     var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search

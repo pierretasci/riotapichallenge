@@ -15,10 +15,9 @@ html
             li.searchBar 
               label(for="searchField") Search Champion:  
               div.searchContainer 
-                input(type="text",autofocus="true",placeholder="Type a Champion name or title" )#searchField
+                input(type="text",autofocus="true",placeholder="Search All Champions" )#searchField
                 div.searchOutput#searchOutput.hidden
     script(type="text/javascript").
       var allChamps = !{JSON.stringify(champions)}
       //- pass this variable to javascript. This is necessary for the search bar
-      //- ISSUE: in champion.jade this variable is turning into just that champion's object, not the entire list
     block content

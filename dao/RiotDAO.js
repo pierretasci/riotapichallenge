@@ -24,6 +24,15 @@ var getChampionsEndpoint = function(region, types) {
     "&champData=" + types.join(",");
 }
 
+/************** Need list of Items: for champion pages *************
+var getItemsEndpoint = function(region, types) {
+  types = types == null ? [] : types;
+  return BASE_ENDPOINT + 
+    sprintf("/api/lol/static-data/{region}/v1.2/item", region) + 
+    "?api_key=" + API_KEY + 
+    "&itemListData=" + types.join(",");
+}
+******************************************************************/
 var getChampionEndpoint = function(region, id) {
   return BASE_ENDPOINT + 
     sprintf("/api/lol/static-data/%s/v1.2/champion/%s", region, id) + 
