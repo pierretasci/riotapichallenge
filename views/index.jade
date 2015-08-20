@@ -17,6 +17,21 @@ block content
         alt='#{character.name}',
         id='#{character.id}'
         ).champSquare
+  hr 
+  //- Create 2 rows of Bilgewater items underneath the champions
+  //- div.itemContainer
+  //-   -var j=0;
+  //-   for item in items.data
+  //-     -j++;
+  //-     //- 8 items on a line
+  //-     if j%8 ==1
+  //-       br
+  //-     img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/#{item.image.full}',
+  //-       data-id='#{item.id}', 
+  //-       rel="prefetch",
+  //-       alt='#{item.name}',
+  //-       id='#{item.id}'
+  //-       ).itemSquare
   script(type="text/javascript",src="/javascripts/index.js")
   script(type="text/javascript",src="/javascripts/homePage.js")
 

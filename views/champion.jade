@@ -12,6 +12,26 @@ block content
   div.transparent
     p#numGames Total Games: 
     p#winrate Winrate: 
+  div.clearfix
+  div.transparent.buildsTable
+    h3 Full Builds
+    table#buildsTable
+      thead
+        tr
+          -for (var i=0; i<6;i++)
+            th item #{i+1}
+          th Won
+      tbody#buildsTableBody
+  div.transparent.itemTable
+    h3 Item Winrates
+    table#itemTable
+      thead
+        tr
+          th Item
+          th Name
+          th Times Purchased
+          th Winrate
+      tbody#itemTableBody
   script(type="text/javascript").
     var champ = !{JSON.stringify(champInfo)}; // Pass champion data to champions.js
     var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search

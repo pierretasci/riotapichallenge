@@ -22,3 +22,15 @@ body {
   margin-left:10px;
   margin-bottom: 2px;
 }
+
+.transparent h3 {
+  text-align: center;
+}
+
+.itemTable{
+  margin-left: 10px; 
+}
+
+td {
+  text-align: center;
+}
