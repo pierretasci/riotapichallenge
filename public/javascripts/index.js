@@ -54,13 +54,16 @@ var searchResults = function(objList) {
                                 ddragon+objList[i].key+'.png"/>'
                                 + objList[i].name+' '+objList[i].title+'</div></a></br>';
     }
-  }
-  else { 
-    addClass(searchOutput,'hidden')
+  } else { 
+    addClass(searchOutput,'hidden');
     removeClass(searchOutput,'scrollBar');
-    ;}
-  if(searchOutput.clientHeight>300) {addClass(searchOutput,'scrollBar');}
-  else {removeClass(searchOutput,'scrollBar');}
+  }
+ 
+  if(searchOutput.clientHeight>300) {
+    addClass(searchOutput,'scrollBar');
+  } else {
+    removeClass(searchOutput,'scrollBar');
+  }
 }
 
 
@@ -68,13 +71,18 @@ var searchResults = function(objList) {
 
 // GLOBAL HELPER FUNCTIONS
 function addClass(el, cls) {
-  var classes = el.className.split(' ');
-  // if(el.className.search(cls)!=-1){
-    classes.push(cls);
-    el.className = classes.join(' ');
-  // }
+  var classes = removeClass(el, cls);
+
+  classes.push(cls);
+  el.className = classes.join(' ');
 }
 
 function removeClass(el, cls) {
-  el.className = el.className.replace(cls,'');
+  var classes = el.className.split(' ');
+  while(classes.indexOf(cls) >= 0) {
+    classes.splice(classes.indexOf(cls), 1);
+  }
+
+  el.className = classes.join(' ');
+  return classes;
 }
