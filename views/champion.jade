@@ -4,6 +4,7 @@ block content
   head
     title  #{champInfo.name}
     link(rel='stylesheet', href='/stylesheets/champions.css')
+    link(rel='stylesheet', href='https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css')
 
   div.transparent
     h1  #{champInfo.name}
@@ -13,6 +14,8 @@ block content
     p#numGames Total Games: 
     p#winrate Winrate: 
   div.clearfix
+  div.chart#chart
+    svg(style="height: 400px")
   div.transparent.buildsTable
     h3 Full Builds
     table#buildsTable
@@ -37,6 +40,8 @@ block content
     var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search
     var champData = !{JSON.stringify(champData)}; // The stat data for this champion
     var allItems = !{JSON.stringify(items)}; // List of all items, their types, cost, and tree build
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js")
+  script(type="text/javascript",src="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.min.js")
   script(type="text/javascript",src="/javascripts/index.js") 
   script(type="text/javascript",src="/javascripts/champions.js") 
 

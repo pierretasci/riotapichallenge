@@ -7,6 +7,7 @@ var itemImage = function(itemId) {
 var numGames = champData.length;
 var wins = 0;
 var boughtItems = [];
+var itemsById = {};
 
 // The final build for each game
 var builds = [];
@@ -71,17 +72,18 @@ for(var i=0;i<boughtItems.length;i++) {
     }
   }
 }
+
 var fillItemTable = function() {
   for(var i=0;i<boughtItems.length;i++) {
-  var winrate = boughtItems[i]["timesWon"]/boughtItems[i]["timesBought"]*100;
-  var rowData="";
-  if(boughtItems[i]["itemId"]==0) {continue}
-  winrate = winrate.toFixed(2);
-  rowData+="<td>"+"<img alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
-  rowData+="<td>"+boughtItems[i]["itemId"]+"</td>";
-  rowData+="<td>"+boughtItems[i]["timesBought"]+"</td>";
-  rowData+="<td>"+winrate+" %</td>";
-  document.getElementById("itemTableBody").innerHTML+="<tr>"+rowData+"</tr>";
+    var winrate = boughtItems[i]["timesWon"]/boughtItems[i]["timesBought"]*100;
+    var rowData="";
+    if(boughtItems[i]["itemId"]==0) {continue;}
+    winrate = winrate.toFixed(2);
+    rowData+="<td>"+"<img alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
+    rowData+="<td>"+boughtItems[i]["itemId"]+"</td>";
+    rowData+="<td>"+boughtItems[i]["timesBought"]+"</td>";
+    rowData+="<td>"+winrate+" %</td>";
+    document.getElementById("itemTableBody").innerHTML+="<tr>"+rowData+"</tr>";
   }
 }
 
@@ -94,10 +96,56 @@ var sortByTimesBought = function(a,b) {
 
 boughtItems = boughtItems.sort(sortByTimesBought);
 
+// Go through and dedupe the bought items
+boughtItems.map(function(item) {
+  if(item.itemId == 0) return;
+
+  if(!itemsById[item.itemId]) {
+    itemsById[item.itemId] = item;
+  } else {
+    itemsById[item.itemId].timesBought += item.timesBought;
+    itemsById[item.itemId].timesWon += item.timesWon;
+  }
+});
+
 fillBuildsTable();
 fillItemTable();
 
+var array = [-1,2,-3,4,-5,-4];
 
-var array = [-1,2,-3,4,-5,-4]
+// Init the chart
+var chart;
+nv.addGraph(function() {
+    chart = nv.models.scatterChart()
+        .showDistX(true)
+        .showDistY(true)
+        .useVoronoi(true)
+        .color(d3.scale.category20().range())
+        .duration(300)
+        .showLegend(false);
+    chart.xAxis.tickFormat(d3.format('.02f'));
+    chart.yAxis.tickFormat(d3.format('.02f'));
+    d3.select('#chart svg')
+        .datum(collectData())
+        .call(chart);
+    nv.utils.windowResize(chart.update);
+    chart.dispatch.on('stateChange', function(e) { ('New State:', JSON.stringify(e)); });
+    return chart;
+});
 
+function collectData() {
+  var data = [];
 
+  for(var key in itemsById) {
+    data.push({
+      key: allItems.data[key].name,
+      values: [{
+        x: itemsById[key].timesBought/numGames,
+        y: itemsById[key].timesWon/itemsById[key].timesBought,
+        size: 2
+      }]
+    });
+  }
+
+  return data;
+}

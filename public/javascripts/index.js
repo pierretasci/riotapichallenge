@@ -66,9 +66,6 @@ var searchResults = function(objList) {
   }
 }
 
-
-
-
 // GLOBAL HELPER FUNCTIONS
 function addClass(el, cls) {
   var classes = removeClass(el, cls);

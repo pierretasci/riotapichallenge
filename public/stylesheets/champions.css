@@ -42,3 +42,14 @@ td {
 .crossMark {
   height: 40px;
 }
+
+.chart {
+  background: rgba(0,0,0,0.75);
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 7px;
+}
+
+.chart svg text {
+  fill: white;
+}
