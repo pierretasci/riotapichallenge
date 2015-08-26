@@ -39,6 +39,12 @@ var getChampionEndpoint = function(region, id) {
     "?api_key=" + API_KEY;
 }
 
+var getItemEndpoint = function(region, id) {
+  return BASE_ENDPOINT + 
+    sprintf("/api/lol/static-data/%s/v1.2/item/%s", region, id) + 
+    "?api_key=" + API_KEY; 
+}
+
 /**
  * This is a generic api calling function that supports options to 
  * cache the result
@@ -90,5 +96,9 @@ module.exports = {
     }
 
     return getAPI(getItemsEndpoint("na", types));
+  },
+
+  getItem: function(id) {
+    return getAPI(getItemEndpoint("na", id));
   }
 }

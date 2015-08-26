@@ -9,6 +9,7 @@ var Parse = require('parse').Parse;
 
 var routes = require('./routes/index');
 var apiRoutes = require('./routes/api');
+var itemRoutes = require('./routes/items');
 
 // == SETUP PARSE ==
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api', apiRoutes);
+app.use('/item', itemRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
