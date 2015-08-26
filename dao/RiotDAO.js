@@ -44,7 +44,7 @@ var getItemEndpoint = function(region, id, types) {
   return BASE_ENDPOINT + 
     sprintf("/api/lol/static-data/%s/v1.2/item/%s", region, id) + 
     "?api_key=" + API_KEY +
-    "&itemListData=" + types.join(",");
+    "&itemData=" + types.join(",");
 }
 
 /**
@@ -102,7 +102,7 @@ module.exports = {
 
   getItem: function(id, types) {
     if(types == null) {
-      types = ["gold", "image", "tree"];
+      types = ["gold", "from", "image", "stacks"];
     }
 
     return getAPI(getItemEndpoint("na", id, types));
