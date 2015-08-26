@@ -7,7 +7,7 @@ var ParseDAO = require('../dao/ParseDAO');
 /* GET a champ's stats */
 router.get('/champ/:id', function(req, res, next) {
   ParseDAO.getChamp(req.params.id).then(function(results) {
-    res.send('index', results);
+    res.status(200).json(results);
   });
 });
 
