@@ -2,7 +2,7 @@
 // champ.name and champ.id will probably be the most useful ones
 document.body.style.backgroundImage="url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+champ.key+"_0.jpg')";
 var itemImage = function(itemId) {
-  return "http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/"+itemId+".png" 
+  return "http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/"+itemId+".png"
 } 
 var numGames = champData.length;
 var wins = 0;
@@ -26,7 +26,7 @@ for (var i=0;i<numGames;i++) {
     builds[i].push(itemJ);
     boughtItems.push({"itemId":itemJ,"timesBought":1,"timesWon":1*winner});
   }
-  // Want to know if this build worked or not
+  // Want to know whether this build won
   builds[i].push(winner);
 }
 var winrate = 100*wins/numGames;
@@ -34,21 +34,27 @@ winrate = winrate.toFixed(2);
 document.getElementById('numGames').innerHTML+=' '+numGames;
 document.getElementById('winrate').innerHTML+=' '+winrate+' %';
 
-
+//Fill table of full builds from each game
 var buildsTableBody = document.getElementById('buildsTableBody');
 var fillBuildsTable = function() {
   for(var i=0;i<builds.length;i++) {
-    builds[i].sort();
     var rowData = "";
     for(var k=0;k<builds[i].length-1;k++) {
       if(builds[i][k]!=0){
-        rowData+="<td>"+"<img alt='"+builds[i][k]+"' src='"+itemImage(builds[i][k])+"'/></td>";
+        rowData+="<td>"+"<img class='itemImage' data-id='"+builds[i][k]+"' alt='"+builds[i][k]+"' src='"+itemImage(builds[i][k])+"'/></td>";
       }
       else {
         rowData+="<td></td>"
       }
     }
-    rowData+="<td>"+builds[i][builds[i].length-1]+"</td>";
+    var xOrCheck; //symbol showing a win or loss
+    if(builds[i][builds[i].length-1]) {
+      xOrCheck = '<img class="checkMark" src="/images/checkmark.svg">';
+    }
+    else {
+      xOrCheck = '<img class="crossMark" src="/images/cross.svg">';
+    }
+    rowData+="<td>"+xOrCheck+"</td>";
     buildsTableBody.innerHTML+="<tr>"+rowData+"</tr>";
   }
 }

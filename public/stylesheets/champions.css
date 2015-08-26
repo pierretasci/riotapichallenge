@@ -34,3 +34,11 @@ body {
 td {
   text-align: center;
 }
+
+.checkMark {
+  height: 50px;
+}
+
+.crossMark {
+  height: 40px;
+}
