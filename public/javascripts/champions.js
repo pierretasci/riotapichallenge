@@ -95,7 +95,29 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
     }
   }
 
+   // compares 2 items based on the the number of times bought
+  var sortByTimesBought = function(a,b) {
+    if(a["timesBought"]<b["timesBought"]) {return 1}
+    else if(a["timesBought"]>b["timesBought"]) {return -1}
+    else {return 0} 
+  }
+
+  boughtItems = boughtItems.sort(sortByTimesBought);
+
+  // Go through and dedupe the bought items
+  boughtItems.map(function(item) {
+    if(item.itemId == 0) return;
+
+    if(!itemsById[item.itemId]) {
+      itemsById[item.itemId] = item;
+    } else {
+      itemsById[item.itemId].timesBought += item.timesBought;
+      itemsById[item.itemId].timesWon += item.timesWon;
+    }
+  });
+
   fillBuildsTable();
+  fillItemTable();
 
   // Go through and dedupe the bought items
   boughtItems.map(function(item) {
