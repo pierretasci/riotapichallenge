@@ -131,13 +131,13 @@ a {
 
 }
 
-.champContainer {
+.champContainer, .itemContainer {
 	width:100%;
 	margin: 0px auto;
   text-align: center;
 }
 
-.champSquare {
+.champSquare, .itemSquare {
   border: 1px solid #10181e;
   display: inline;
   width:75px;
@@ -148,7 +148,7 @@ a {
   left:0px;
 }
 
-.champSquare:hover{
+.champSquare:hover, .itemSquare:hover {
 	opacity: 0.7;
 	cursor: pointer;
   color: white;

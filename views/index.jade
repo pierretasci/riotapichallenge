@@ -3,6 +3,19 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div.itemContainer
+    -var bilgewaterItems = [3433,3430,3431,3434,3742,3744,3745,3829,3844,3841,3840,3911,3924,3652,3150]
+    -for(var k=0;k<bilgewaterItems.length;k++)
+      -var itemK = items.data[bilgewaterItems[k]];
+      img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/#{itemK.image.full}',
+        data-id='#{itemK.id}', 
+        rel="prefetch",
+        alt='#{itemK.name}',
+        id='#{itemK.id}'
+        ).itemSquare
+  
+  hr 
+      
   div.champContainer
     -var i=0;
     for character in Object.keys(champions.data).sort()
@@ -16,7 +29,7 @@ block content
         alt='#{champions.data[character].name}',
         id='#{champions.data[character].id}'
         ).champSquare
-  hr 
+
   //- Create 2 rows of Bilgewater items underneath the champions
   //- div.itemContainer
   //-   -var j=0;
@@ -25,12 +38,6 @@ block content
   //-     //- 8 items on a line
   //-     if j%8 ==1
   //-       br
-  //-     img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/#{item.image.full}',
-  //-       data-id='#{item.id}', 
-  //-       rel="prefetch",
-  //-       alt='#{item.name}',
-  //-       id='#{item.id}'
-  //-       ).itemSquare
   script(type="text/javascript",src="/javascripts/index.js")
   script(type="text/javascript",src="/javascripts/homePage.js")
 
