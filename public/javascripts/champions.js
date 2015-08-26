@@ -103,45 +103,32 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
 
   boughtItems = boughtItems.sort(sortByTimesBought);
 
-  // Go through and dedupe the bought items
-  boughtItems.map(function(item) {
-    if(item.itemId == 0) return;
-
-    if(!itemsById[item.itemId]) {
-      itemsById[item.itemId] = item;
-    } else {
-      itemsById[item.itemId].timesBought += item.timesBought;
-      itemsById[item.itemId].timesWon += item.timesWon;
-    }
-  });
-
   fillBuildsTable();
   fillItemTable();
 
+  var itemImages = document.getElementsByClassName('itemImage');
+  var itemInfo = document.getElementById('itemInfo');
 
-var itemImages = document.getElementsByClassName('itemImage');
-var itemInfo = document.getElementById('itemInfo');
+  var itemHoverOn = function(e) {
+    itemInfo.style.display='block';
+    var itemId = e.target.dataset["id"];
+    itemInfo.getElementsByTagName('h3')[0].innerHTML=allItems.data[itemId].name;
+    itemInfo.getElementsByTagName('h5')[0].innerHTML=allItems.data[itemId].plaintext;
+    itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.base+"g";
+    itemInfo.getElementsByTagName('div')[1].innerHTML=allItems.data[itemId].description;
+    itemInfo.style.top=(e.clientY+5+document.body.scrollTop)+"px";
+    itemInfo.style.left=(e.clientX+5)+"px";
+  }
 
-var itemHoverOn = function(e) {
-  itemInfo.style.display='block';
-  var itemId = e.target.dataset["id"];
-  itemInfo.getElementsByTagName('h3')[0].innerHTML=allItems.data[itemId].name;
-  itemInfo.getElementsByTagName('h5')[0].innerHTML=allItems.data[itemId].plaintext;
-  itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.base+"g";
-  itemInfo.getElementsByTagName('div')[1].innerHTML=allItems.data[itemId].description;
-  itemInfo.style.top=(e.clientY+5+document.body.scrollTop)+"px";
-  itemInfo.style.left=(e.clientX+5)+"px";
-}
+  var itemHoverOff = function (e) {
+    itemInfo.style.display='none';
+  }
 
-var itemHoverOff = function (e) {
-  itemInfo.style.display='none';
-}
-
-for (var i=0;i<itemImages.length;i++) {
-  itemImages[i].addEventListener('mouseover',itemHoverOn);
-  itemImages[i].addEventListener('mouseenter',itemHoverOn);
-  itemImages[i].addEventListener('mouseout',itemHoverOff);
-}
+  for (var i=0;i<itemImages.length;i++) {
+    itemImages[i].addEventListener('mouseover',itemHoverOn);
+    itemImages[i].addEventListener('mouseenter',itemHoverOn);
+    itemImages[i].addEventListener('mouseout',itemHoverOff);
+  }
 
   // Go through and dedupe the bought items
   boughtItems.map(function(item) {
