@@ -6,7 +6,6 @@ var itemImage = function(itemId) {
 }
 
 nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
-  console.log(code);
   if(code != 200) {
     return;
   }
@@ -87,8 +86,8 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
       var rowData="";
       if(boughtItems[i]["itemId"]==0) {continue;}
       winrate = winrate.toFixed(2);
-      rowData+="<td>"+"<img alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
-      rowData+="<td>"+boughtItems[i]["itemId"]+"</td>";
+      rowData+="<td>"+"<img class='itemImage' data-id='"+boughtItems[i]["itemId"]+"' alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
+      rowData+="<td>"+allItems.data[boughtItems[i]["itemId"]].name+"</td>";
       rowData+="<td>"+boughtItems[i]["timesBought"]+"</td>";
       rowData+="<td>"+winrate+" %</td>";
       document.getElementById("itemTableBody").innerHTML+="<tr>"+rowData+"</tr>";
@@ -118,6 +117,31 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
 
   fillBuildsTable();
   fillItemTable();
+
+
+var itemImages = document.getElementsByClassName('itemImage');
+var itemInfo = document.getElementById('itemInfo');
+
+var itemHoverOn = function(e) {
+  itemInfo.style.display='block';
+  var itemId = e.target.dataset["id"];
+  itemInfo.getElementsByTagName('h3')[0].innerHTML=allItems.data[itemId].name;
+  itemInfo.getElementsByTagName('h5')[0].innerHTML=allItems.data[itemId].plaintext;
+  itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.base+"g";
+  itemInfo.getElementsByTagName('div')[1].innerHTML=allItems.data[itemId].description;
+  itemInfo.style.top=(e.clientY+5+document.body.scrollTop)+"px";
+  itemInfo.style.left=(e.clientX+5)+"px";
+}
+
+var itemHoverOff = function (e) {
+  itemInfo.style.display='none';
+}
+
+for (var i=0;i<itemImages.length;i++) {
+  itemImages[i].addEventListener('mouseover',itemHoverOn);
+  itemImages[i].addEventListener('mouseenter',itemHoverOn);
+  itemImages[i].addEventListener('mouseout',itemHoverOff);
+}
 
   // Go through and dedupe the bought items
   boughtItems.map(function(item) {
@@ -176,27 +200,3 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
     return data;
   }
 });
-
-var itemImages = document.getElementsByClassName('itemImage');
-var itemInfo = document.getElementById('itemInfo');
-
-var itemHoverOn = function(e) {
-  itemInfo.style.display='block';
-  var itemId = e.target.dataset["id"];
-  itemInfo.getElementsByTagName('h3')[0].innerHTML=allItems.data[itemId].name;
-  itemInfo.getElementsByTagName('h5')[0].innerHTML=allItems.data[itemId].plaintext;
-  itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.base+"g";
-  itemInfo.getElementsByTagName('div')[1].innerHTML=allItems.data[itemId].description;
-  itemInfo.style.top=(e.clientY+5+document.body.scrollTop)+"px";
-  itemInfo.style.left=(e.clientX+5)+"px";
-}
-
-var itemHoverOff = function (e) {
-  itemInfo.style.display='none';
-}
-
-for (var i=0;i<itemImages.length;i++) {
-  itemImages[i].addEventListener('mouseover',itemHoverOn);
-  itemImages[i].addEventListener('mouseenter',itemHoverOn);
-  itemImages[i].addEventListener('mouseout',itemHoverOff);
-}

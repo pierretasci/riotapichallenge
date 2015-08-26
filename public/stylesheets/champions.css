@@ -80,3 +80,16 @@ td {
 .tooltip-title {
   margin: 0 !important;
 }
+
+.buildsTable{
+  width: 465px;
+}
+
+.itemTable {
+  width:465px;
+}
+
+table{
+  width: 100%;
+  text-align: center;
+}
