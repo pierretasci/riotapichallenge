@@ -25,17 +25,12 @@ block content
             th item #{i+1}
           th Won
       tbody#buildsTableBody
-  div.transparent.itemTable
-    h3 Item Winrates
-    table#itemTable
-      thead
-        tr
-          th Item
-          th Name
-          th Times Purchased
-          th Winrate
-      tbody#itemTableBody
-  script(type="text/javascript").
+  div.transparent.itemInfo#itemInfo
+    h3 Name
+    h5 Plaintext
+    div.price Price
+    div Description
+   script(type="text/javascript").
     var champ = !{JSON.stringify(champInfo)}; // Pass champion data to champions.js
     var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search
     var allItems = !{JSON.stringify(items)}; // List of all items, their types, cost, and tree build
