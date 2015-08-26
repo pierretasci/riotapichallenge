@@ -39,10 +39,12 @@ var getChampionEndpoint = function(region, id) {
     "?api_key=" + API_KEY;
 }
 
-var getItemEndpoint = function(region, id) {
+var getItemEndpoint = function(region, id, types) {
+  types = types == null ? [] : types;
   return BASE_ENDPOINT + 
     sprintf("/api/lol/static-data/%s/v1.2/item/%s", region, id) + 
-    "?api_key=" + API_KEY; 
+    "?api_key=" + API_KEY +
+    "&itemListData=" + types.join(",");
 }
 
 /**
@@ -98,7 +100,11 @@ module.exports = {
     return getAPI(getItemsEndpoint("na", types));
   },
 
-  getItem: function(id) {
-    return getAPI(getItemEndpoint("na", id));
+  getItem: function(id, types) {
+    if(types == null) {
+      types = ["gold", "image", "tree"];
+    }
+
+    return getAPI(getItemEndpoint("na", id, types));
   }
 }
