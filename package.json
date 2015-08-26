@@ -22,5 +22,5 @@
     "parse": "^1.5.0",
     "request-promise": "^0.4.3",
     "sprintf-js": "^1.0.3"
-  },
+  }
 }
