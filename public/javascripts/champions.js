@@ -114,7 +114,7 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
     var itemId = e.target.dataset["id"];
     itemInfo.getElementsByTagName('h3')[0].innerHTML=allItems.data[itemId].name;
     itemInfo.getElementsByTagName('h5')[0].innerHTML=allItems.data[itemId].plaintext;
-    itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.base+"g";
+    itemInfo.getElementsByTagName('div')[0].innerHTML="Cost: "+allItems.data[itemId].gold.total+"g";
     itemInfo.getElementsByTagName('div')[1].innerHTML=allItems.data[itemId].description;
     itemInfo.style.top=(e.clientY+5+document.body.scrollTop)+"px";
     itemInfo.style.left=(e.clientX+5)+"px";
