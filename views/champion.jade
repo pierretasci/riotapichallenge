@@ -38,10 +38,10 @@ block content
   script(type="text/javascript").
     var champ = !{JSON.stringify(champInfo)}; // Pass champion data to champions.js
     var allChamps = !{JSON.stringify(champions)}; // The list of champions for the sake of search
-    var champData = !{JSON.stringify(champData)}; // The stat data for this champion
     var allItems = !{JSON.stringify(items)}; // List of all items, their types, cost, and tree build
   script(src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js")
   script(type="text/javascript",src="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.min.js")
+  script(type="text/javascript", src="/javascripts/nanoajax.js")
   script(type="text/javascript",src="/javascripts/index.js") 
   script(type="text/javascript",src="/javascripts/champions.js") 
 
