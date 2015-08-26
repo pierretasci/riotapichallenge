@@ -8,10 +8,12 @@ var ParseDAO = require('../dao/ParseDAO');
 router.get('/:id', function(req, res, next) {
   var championListPromise = RiotDAO.getChampions();
   var item = RiotDAO.getItem(req.params.id);
-  Promise.all([championListPromise, item]).then(function(results) {
+  var itemData = RiotDAO.getItems();
+  Promise.all([championListPromise, item, itemData]).then(function(results) {
     res.render('item', {
       champions: JSON.parse(results[0]),
-      item: JSON.parse(results[1])
+      item: JSON.parse(results[1]),
+      items: JSON.parse(results[2])
     });
   });
 });
