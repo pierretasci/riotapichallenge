@@ -6,22 +6,24 @@ var ParseDAO = require('../dao/ParseDAO');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  RiotDAO.getChampions().then(function(results) {
+  var championListPromise = RiotDAO.getChampions();
+  var itemData = RiotDAO.getItems();
+  Promise.all([champPromise, itemData]).then(function(results) {
     res.render('index', {
-      champions: JSON.parse(results), 
+      champions: JSON.parse(results[0]),
+      items: JSON.parse(results[1]),
       title: "Black Market Browser"
     });
   });
 });
 
+/** Champion page */
 router.get('/:id', function(req, res, next) {
-  var curTime = new Date().getTime();
   var champPromise = RiotDAO.getChampion(req.params.id)
   var championListPromise = RiotDAO.getChampions();
   var itemData = RiotDAO.getItems();
 
   Promise.all([champPromise, championListPromise, itemData]).then(function(results) {
-      console.log("Elapsed time: " + (new Date().getTime() - curTime) + "ms");
       res.render('champion', {
         champInfo: JSON.parse(results[0]),
         champions: JSON.parse(results[1]),
