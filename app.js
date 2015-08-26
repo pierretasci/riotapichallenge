@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var config = require('config');s
 var bodyParser = require('body-parser');
 var Parse = require('parse').Parse;
 
@@ -11,7 +12,8 @@ var apiRoutes = require('./routes/api');
 
 // == SETUP PARSE ==
 
-Parse.initialize("rGBdUpv9d0jiyMZVntjKmEumiG9HW58LDG1Xa0pd", "ifQwhZl27cc3dVWkukzBrk4HF8yFSivfoCXMA6WN");
+Parse.initialize(process.env.PARSE_PUBLIC_KEY || config.get('PARSE_PUBLIC_KEY'),
+ process.env.PARSE_SECRET_KEY || config.get('PARSE_SECRET_KEY'));
 
 // == SETUP APP == 
 

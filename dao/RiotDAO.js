@@ -6,7 +6,7 @@ var cache = require('./MemCache');
 
 // CONSTANTS
 var BASE_ENDPOINT = "https://na.api.pvp.net";
-var API_KEY = config.get("RIOT_API_KEY");
+var API_KEY = process.env.RIOT_API_KEY || config.get("RIOT_API_KEY");
 
 // HELPER METHODS
 var getMatchEndpoint = function(region, matchId, includeTimeline) {
