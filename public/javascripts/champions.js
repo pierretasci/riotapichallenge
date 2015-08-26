@@ -108,9 +108,18 @@ fillBuildsTable();
           .useVoronoi(true)
           .color(d3.scale.category20().range())
           .duration(300)
-          .showLegend(false);
-      chart.xAxis.tickFormat(d3.format('.02f'));
-      chart.yAxis.tickFormat(d3.format('.02f'));
+          .showLegend(false)
+          .pointDomain([100, 200, 300])
+          .pointRange([100, 200, 300])
+          .pointSize(200);
+      chart.tooltipContent(function(key) {
+        return '<div class="tooltip"><h4 class="tooltip-title">' + allItems.data[key.series[0].key].name + '</h3><br>' +
+          '<img class="tooltip-image" src="' + itemImage(key.series[0].key) + '" />' +
+          '<p class="tooltip-item">Win Rate: ' + Math.round(key.point.y * 100) + '%<p>' +
+          '<p class="tooltip-item">Build Rate: ' + Math.round(key.point.x * 100) + '%<p></div>';
+      });
+      chart.xAxis.tickFormat(d3.format('0%')).axisLabel("Build Rate");
+      chart.yAxis.tickFormat(d3.format('0%')).axisLabel("Win Rate");
       d3.select('#chart svg')
           .datum(collectData())
           .call(chart);
@@ -125,11 +134,10 @@ fillBuildsTable();
 
     for(var key in itemsById) {
       data.push({
-        key: allItems.data[key].name,
+        key: key,
         values: [{
           x: itemsById[key].timesBought/numGames,
-          y: itemsById[key].timesWon/itemsById[key].timesBought,
-          size: 2
+          y: itemsById[key].timesWon/itemsById[key].timesBought
         }]
       });
     }

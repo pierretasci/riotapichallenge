@@ -71,3 +71,12 @@ td {
 .price {
   color: yellow;
 }
+
+.tooltip {
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.tooltip-title {
+  margin: 0 !important;
+}
