@@ -5,17 +5,17 @@ block content
   p Welcome to #{title}
   div.champContainer
     -var i=0;
-    for character in champions.data
+    for character in Object.keys(champions.data).sort()
       -i++;
       //- 14 champions on a line
       if i%14==1
         br
       //- These images are not appearing in alphabetical order. Apparently for...in uses arbitrary ordering
-      img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{character.image.full}',
-        data-id='#{character.id}', 
+      img(src='http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{champions.data[character].image.full}',
+        data-id='#{champions.data[character].id}', 
         rel="prefetch",
-        alt='#{character.name}',
-        id='#{character.id}'
+        alt='#{champions.data[character].name}',
+        id='#{champions.data[character].id}'
         ).champSquare
   hr 
   //- Create 2 rows of Bilgewater items underneath the champions
