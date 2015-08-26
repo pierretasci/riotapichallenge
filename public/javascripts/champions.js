@@ -94,10 +94,20 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
       document.getElementById("itemTableBody").innerHTML+="<tr>"+rowData+"</tr>";
     }
   }
-}
 
+  fillBuildsTable();
 
-fillBuildsTable();
+  // Go through and dedupe the bought items
+  boughtItems.map(function(item) {
+    if(item.itemId == 0) return;
+
+    if(!itemsById[item.itemId]) {
+      itemsById[item.itemId] = item;
+    } else {
+      itemsById[item.itemId].timesBought += item.timesBought;
+      itemsById[item.itemId].timesWon += item.timesWon;
+    }
+  });
 
   // Init the chart
   var chart;
@@ -127,7 +137,6 @@ fillBuildsTable();
       chart.dispatch.on('stateChange', function(e) { ('New State:', JSON.stringify(e)); });
       return chart;
   });
-
 
   function collectData() {
     var data = [];
