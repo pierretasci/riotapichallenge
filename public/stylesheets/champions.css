@@ -62,7 +62,9 @@ td {
 }
 
 .bilgewaterItem {
-  border: 1px solid red;
+  padding: 2px;
+  background-color:red;
+  border: 1px solid gold;
 }
 
 .itemInfo{
@@ -89,11 +91,11 @@ td {
 }
 
 .buildsTable{
-  width: 465px;
+  width: 485px;
 }
 
 .itemTable {
-  width:465px;
+  width:485px;
 }
 
 table{
