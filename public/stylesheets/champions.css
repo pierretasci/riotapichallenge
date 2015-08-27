@@ -6,7 +6,8 @@ body {
 }
 
 .transparent{
-  background-color: rgba(2,2,2,0.6);
+  padding: 5px 10px 5px 10px;
+  background-color: rgba(2,2,2,0.7);
   border-radius: 10px;
   display: inline-block;
 }
@@ -16,6 +17,8 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+
 
 .transparent h2 {
   float:right;
@@ -56,6 +59,10 @@ td {
 
 .itemImage{
   border-radius: 100%;
+}
+
+.bilgewaterItem {
+  border: 1px solid red;
 }
 
 .itemInfo{

@@ -5,6 +5,17 @@ var itemImage = function(itemId) {
   return "http://ddragon.leagueoflegends.com/cdn/5.15.1/img/item/"+itemId+".png"
 }
 
+var bilgewaterItems = [3433,3430,3431,3434,3742,3744,3745,3829,3844,3841,3840,3911,3924,3652,3150];
+// Checks to see if a given itemId is a bilgewater item
+var isBilgewater = function(itemId) {
+  for (var i=0;i<bilgewaterItems.length;i++) {
+    if(bilgewaterItems[i]==itemId) {
+      return true;
+    }
+  }
+  return false;
+}
+
 nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
   if(code != 200) {
     return;
@@ -49,7 +60,11 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
       var rowData = "";
       for(var k=0;k<builds[i].length-1;k++) {
         if(builds[i][k]!=0){
-          rowData+="<td>"+"<img class='itemImage' data-id='"+builds[i][k]+"' alt='"+builds[i][k]+"' src='"+itemImage(builds[i][k])+"'/></td>";
+          var itemClass = 'itemImage'  
+          if(isBilgewater(builds[i][k])) {
+            itemClass+=' bilgewaterItem'
+          }
+          rowData+="<td>"+"<img class='"+itemClass+"' data-id='"+builds[i][k]+"' alt='"+builds[i][k]+"' src='"+itemImage(builds[i][k])+"'/></td>";          
         }
         else {
           rowData+="<td></td>"
@@ -85,8 +100,12 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
       var winrate = boughtItems[i]["timesWon"]/boughtItems[i]["timesBought"]*100;
       var rowData="";
       if(boughtItems[i]["itemId"]==0) {continue;}
-      winrate = winrate.toFixed(2);
-      rowData+="<td>"+"<img class='itemImage' data-id='"+boughtItems[i]["itemId"]+"' alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
+      winrate = Math.round(100*winrate)/100; //rounds winrate to 2 decimal places
+      var itemClass = 'itemImage'
+      if(isBilgewater(boughtItems[i]["itemId"])) {
+        itemClass+=' bilgewaterItem';
+      }
+      rowData+="<td>"+"<img class='"+itemClass+"' data-id='"+boughtItems[i]["itemId"]+"' alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
       rowData+="<td>"+allItems.data[boughtItems[i]["itemId"]].name+"</td>";
       rowData+="<td>"+boughtItems[i]["timesBought"]+"</td>";
       rowData+="<td>"+winrate+" %</td>";
