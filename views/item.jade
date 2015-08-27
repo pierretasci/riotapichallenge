@@ -1,7 +1,12 @@
 extends layout
 
 block content
+  link(rel='stylesheet', href='/stylesheets/items.css')
   h1= item.name
   script(type="text/javascript").
     var item = !{JSON.stringify(item)}; // The item information
     var items = !{JSON.stringify(items)}; // All of the items
+
+
+  script(type="text/javascript",src="/javascripts/index.js") 
+  script(type="text/javascript",src="/javascripts/items.js") 
