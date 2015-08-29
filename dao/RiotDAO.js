@@ -94,7 +94,7 @@ module.exports = {
 
   getItems: function(types) {
     if(types == null) {
-      types = ["gold", "image", "tree"];
+      types = ["gold","from", "image", "tree"];
     }
 
     return getAPI(getItemsEndpoint("na", types));

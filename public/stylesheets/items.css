@@ -4,3 +4,19 @@ body {
   background-position: center center;
   background-attachment: fixed;
 }
+
+.transparent{
+  padding: 5px 10px 5px 10px;
+  background-color: rgba(2,2,2,0.7);
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.buildPathContainer{
+  text-align: center;
+}
+
+.requiredItem {
+  display: inline;
+
+}

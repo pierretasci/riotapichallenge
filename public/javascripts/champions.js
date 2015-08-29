@@ -21,7 +21,7 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
     return;
   }
   var champData = JSON.parse(res);
- 
+  console.log(champData);
   var numGames = champData.length;
   var wins = 0;
   var boughtItems = [];
