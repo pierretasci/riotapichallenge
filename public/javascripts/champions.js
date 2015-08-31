@@ -111,7 +111,7 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
       }
       rowData+="<td>"+"<img class='"+itemClass+"' data-id='"+boughtItems[i]["itemId"]+"' alt='"+boughtItems[i]["itemId"]+"' src='"+itemImage(boughtItems[i]["itemId"])+"'/></td>";
       rowData+="<td>"+allItems.data[boughtItems[i]["itemId"]].name+"</td>";
-      rowData+="<td>"+boughtItems[i]["timesBought"]+"</td>";
+      rowData+="<td>"+boughtItems[i]["timesBought"]+" / "+numGames+"</td>";
       rowData+="<td>"+winrate+" %</td>";
       document.getElementById("itemTableBody").innerHTML+="<tr>"+rowData+"</tr>";
     }
