@@ -20,6 +20,10 @@ nanoajax.ajax('/api/champ/'+champ.id, function(code, res) {
   if(code != 200) {
     return;
   }
+
+  // Now that we have the data, remove the loading gif
+  document.getElementById('spinner').style.display = "none";
+
   var champData = JSON.parse(res);
   console.log(champData);
   var numGames = champData.length;

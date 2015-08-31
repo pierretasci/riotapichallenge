@@ -48,13 +48,22 @@ td {
 
 .chart {
   background: rgba(0,0,0,0.75);
+  position: relative;
   color: white;
+  margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 7px;
 }
 
 .chart svg text {
   fill: white;
+}
+
+.chart .spinner {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .itemImage{
